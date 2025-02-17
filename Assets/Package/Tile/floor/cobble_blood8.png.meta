@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cobble_blood8_0: 8726642212090503966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

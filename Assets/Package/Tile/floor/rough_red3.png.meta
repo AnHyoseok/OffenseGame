@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rough_red3_0: 4689243557193313571
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

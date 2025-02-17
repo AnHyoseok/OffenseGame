@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      volcanic_floor2_0: 4722556765758439771
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

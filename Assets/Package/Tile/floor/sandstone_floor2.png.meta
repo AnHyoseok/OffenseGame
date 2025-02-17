@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sandstone_floor2_0: 4391387007993161189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

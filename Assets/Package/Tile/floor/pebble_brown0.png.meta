@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pebble_brown0_0: 5499593843308125861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

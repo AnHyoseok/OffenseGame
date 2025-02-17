@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      floor_nerves2_0: 7338244938330463022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

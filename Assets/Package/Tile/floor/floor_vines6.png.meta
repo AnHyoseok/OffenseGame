@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      floor_vines6_0: 59979365251503620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grass_flowers_yellow1_0: 1908069922665007337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
