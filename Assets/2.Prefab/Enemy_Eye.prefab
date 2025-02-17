@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6213443112729133608}
   - component: {fileID: 779710748337190301}
   - component: {fileID: 5345769253622359509}
-  - component: {fileID: 7901452387587101642}
   - component: {fileID: 4928527674407884890}
+  - component: {fileID: 7901452387587101642}
   - component: {fileID: 3004558038715730031}
+  - component: {fileID: -2189166833338631358}
   m_Layer: 0
   m_Name: Enemy_Eye
   m_TagString: Enemy
@@ -164,19 +165,6 @@ NavMeshAgent:
   m_BaseOffset: 0.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7901452387587101642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976675479087307898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29460f8eaeebb51459ef0c208ce1f82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
 --- !u!60 &4928527674407884890
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -240,6 +228,19 @@ PolygonCollider2D:
       - {x: 0.17, y: -0.03}
       - {x: 0.25, y: 0.049999997}
   m_UseDelaunayMesh: 0
+--- !u!114 &7901452387587101642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976675479087307898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29460f8eaeebb51459ef0c208ce1f82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
 --- !u!114 &3004558038715730031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,3 +256,18 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   experiencePrefab: {fileID: 1309791727078378060, guid: 854306381ebd184439765022394f4dbe, type: 3}
+--- !u!114 &-2189166833338631358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976675479087307898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd7b3d42f88adb4cae80fe327992eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  hitColorDuration: 0.5

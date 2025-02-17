@@ -9,6 +9,7 @@ namespace IdleGame.Hero
         public int level = 1;                  // 현재 레벨
         public int currentExp = 0;             // 현재 경험치
         public int expToNextLevel = 100;       // 다음 레벨까지 필요한 경험치
+        public bool isLevelUp;
 
         [Header("UI Elements")]
         public TextMeshProUGUI levelText;      // 레벨을 표시할 UI 텍스트
@@ -42,7 +43,7 @@ namespace IdleGame.Hero
             // 필요한 경험치 증가 (예: 20% 증가)
             expToNextLevel = Mathf.RoundToInt(expToNextLevel * 1.2f);
             Debug.Log($"레벨 업! 현재 레벨: {level}");
-
+            isLevelUp = true;
             // 레벨 업 시 추가 효과를 여기에 추가하세요 (예: 스탯 증가, 스킬 해제 등)
         }
 
