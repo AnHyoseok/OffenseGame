@@ -6,26 +6,25 @@ namespace IdleGame.Character
     {
         protected SpriteRenderer spriteRenderer;
         protected Vector3 lastPosition;
-        private Vector3 originalScale; // 기본 크기 저장
 
         protected virtual void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             lastPosition = transform.position;
-            originalScale = transform.localScale; // 초기 스케일 저장
         }
 
         protected virtual void UpdateSpriteDirection()
         {
             Vector3 movementDirection = transform.position - lastPosition;
 
+            // x축 이동 방향에 따라 flipX를 설정
             if (movementDirection.x > 0)
             {
-                transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+                spriteRenderer.flipX = false; // 오른쪽으로 이동
             }
             else if (movementDirection.x < 0)
             {
-                transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+                spriteRenderer.flipX = true; // 왼쪽으로 이동
             }
 
             lastPosition = transform.position;

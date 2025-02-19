@@ -11,6 +11,8 @@ namespace IdleGame.Hero
     public class HeroHealth : MonoBehaviour, IDamageable
     {
         #region Variables
+        private GameController gameController;
+
         [Header("Hero Stats")]
         public int maxHealth = 100;      // 최대 체력
         private int currentHealth;       // 현재 체력
@@ -19,10 +21,13 @@ namespace IdleGame.Hero
         public Image imageBackground;    // 체력바 배경 이미지
         public Image imageFill;          // 체력바 채우기 이미지
         public TextMeshProUGUI hpText;              // 체력 표시 텍스트
+
+
         #endregion
 
         void Start()
         {
+            gameController = FindAnyObjectByType<GameController>();
             currentHealth = maxHealth;  // 시작 시 체력을 최대 체력으로 설정
             UpdateHealthUI();           // 초기 체력 UI 업데이트
         }
@@ -57,6 +62,7 @@ namespace IdleGame.Hero
             if (currentHealth <= 0)
             {
                 Die();
+
             }
         }
 
@@ -64,7 +70,7 @@ namespace IdleGame.Hero
         void Die()
         {
             Debug.Log("Hero Died");
-
+            gameController.LoseGame();
 
             Destroy(gameObject); // 영웅 오브젝트 파괴 
         }

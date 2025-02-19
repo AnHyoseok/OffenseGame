@@ -17,7 +17,7 @@ namespace IdleGame.UI
 
         private void Start()
         {
-            heroLevel = FindObjectOfType<HeroLevel>(); // HeroLevel 초기화
+            heroLevel = FindAnyObjectByType<HeroLevel>(); // HeroLevel 초기화
 
             // 각 버튼에 대한 클릭 이벤트를 설정
             for (int i = 0; i < skillButtons.Length; i++)

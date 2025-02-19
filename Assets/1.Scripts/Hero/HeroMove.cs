@@ -3,7 +3,7 @@ using IdleGame.enemy;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-
+using IdleGame.Enemy;
 namespace IdleGame.Hero
 {
     public class HeroMove : SpriteDirection
@@ -13,7 +13,8 @@ namespace IdleGame.Hero
         [SerializeField] private float speed = 1f;
         [SerializeField] private float detectionRadius = 5f;  // Enemy 감지 범위
         [SerializeField] private float fleeDistance = 3f;     // 도망가는 거리
-        [SerializeField] private EnemySpawn enemySpawn;
+
+        private EnemySpawnMouse enemySpawnMouse;
 
         void Start()
         {
@@ -28,16 +29,25 @@ namespace IdleGame.Hero
             agent.updateUpAxis = false;
 
             lastPosition = transform.position;
+
+            // EnemySpawnMouse를 찾음
+            enemySpawnMouse = FindAnyObjectByType<EnemySpawnMouse>();
+            if (enemySpawnMouse == null)
+            {
+                Debug.LogError("EnemySpawnMouse not found in the scene!");
+            }
         }
 
         void Update()
         {
+            if (gameObject.layer == LayerMask.NameToLayer("Skill")) return; // "SkillLayer" 레이어는 제외
+
             Transform enemy = FindClosestEnemy();
             Transform experience = FindClosestExperience();
 
             if (enemy != null)
             {
-                // 🔥 안전한 위치를 찾아 이동
+                // 안전한 위치를 찾아 이동
                 Vector3 safestPosition = FindSafestPosition();
                 agent.SetDestination(safestPosition);
             }
@@ -47,6 +57,7 @@ namespace IdleGame.Hero
             }
 
             agent.speed = speed;
+
             UpdateSpriteDirection();
         }
 
@@ -61,11 +72,9 @@ namespace IdleGame.Hero
             for (int i = 0; i < sampleCount; i++)
             {
                 float angle = i * angleIncrement;
-                // 2D에서는 Z축 회전을 사용하여 방향 벡터 계산
                 Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
                 Vector3 samplePosition = transform.position + direction * sampleRadius;
 
-                // NavMesh 경로 검사
                 NavMeshPath path = new NavMeshPath();
                 if (agent.CalculatePath(samplePosition, path))
                 {
@@ -87,7 +96,7 @@ namespace IdleGame.Hero
         int CountEnemiesNearPosition(Vector3 position, float radius)
         {
             int count = 0;
-            foreach (var enemy in enemySpawn.enemyList.Values)
+            foreach (var enemy in enemySpawnMouse.spawnedEnemies)
             {
                 if (enemy != null)
                 {
@@ -101,13 +110,12 @@ namespace IdleGame.Hero
             return count;
         }
 
-        // 🛠 가장 가까운 Enemy 찾기
+        // 가장 가까운 Enemy 찾기
         Transform FindClosestEnemy()
         {
-            GameObject[] enemies = enemySpawn.enemyList
-                .Where(d => d.Value != null && Vector2.Distance(transform.position, d.Value.transform.position) <= detectionRadius)
-                .OrderBy(d => Vector2.Distance(transform.position, d.Value.transform.position))
-                .Select(d => d.Value)
+            GameObject[] enemies = enemySpawnMouse.spawnedEnemies
+                .Where(e => e != null && Vector2.Distance(transform.position, e.transform.position) <= detectionRadius)
+                .OrderBy(e => Vector2.Distance(transform.position, e.transform.position))
                 .ToArray();
 
             Transform closest = enemies.Length > 0 ? enemies[0].transform : null;
@@ -115,7 +123,7 @@ namespace IdleGame.Hero
             return closest;
         }
 
-        // 🛠 가장 가까운 경험치 찾기
+        // 가장 가까운 경험치 찾기
         Transform FindClosestExperience()
         {
             GameObject[] experiences = GameObject.FindGameObjectsWithTag("Experience");

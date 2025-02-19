@@ -1,36 +1,41 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    private Dictionary<string, ISkill> skills = new Dictionary<string, ISkill>();
+    public GameObject skillPrefab;  // SkillProjectile 프리팹
+    public Transform hero;  // Hero의 위치
+    public SkillSystem skillSystem;  // SkillSystem 객체
+    public SkillData someSkillData;
 
-    public void AcquireSkill(ISkill newSkill)
+    void Start()
     {
-        if (!skills.ContainsKey(newSkill.SkillName))
-        {
-            skills[newSkill.SkillName] = newSkill;
-            Debug.Log($"{newSkill.SkillName} acquired!");
-        }
+
+        skillSystem = new SkillSystem();  // SkillSystem 객체 생성
+        skillSystem.skillData = someSkillData;  
     }
 
-    public void ActivateSkills(Vector2 position)
+    void Update()
     {
-        foreach (var skill in skills.Values)
+        if (Input.GetKeyDown(KeyCode.Q))  // Q키를 눌렀을 때
         {
-            skill.Activate(position);
+            CreateSkill();  // 스킬 생성
         }
+        skillSystem.Update();  // 매 프레임 Update 호출
+    }
+    void CreateSkill()
+    {
+        // Hero 위치에서 SkillProjectile 생성
+        Instantiate(skillPrefab, hero.position, Quaternion.identity);
+    }
+    // 스킬 활성화
+    public void ActivateSkill()
+    {
+        skillSystem.ActivateSkill();  // 스킬 활성화
     }
 
-    public void UpgradeSkill(string skillName)
+    // 스킬 비활성화
+    public void DeactivateSkill()
     {
-        if (skills.TryGetValue(skillName, out ISkill skill))
-        {
-            skill.Upgrade();
-        }
-        else
-        {
-            Debug.LogWarning($"Skill {skillName} not found!");
-        }
+        skillSystem.DeactivateSkill();  // 스킬 비활성화
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace IdleGame.Enemy
@@ -30,6 +31,18 @@ namespace IdleGame.Enemy
         public void SetDamageState(bool damaged)
         {
             isDamaged = damaged;
+
+            if (isDamaged)
+            {
+                StopAllCoroutines();  
+                StartCoroutine(ResetColorAfterDelay(0.1f));  
+            }
+        }
+
+        private IEnumerator ResetColorAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            isDamaged = false;
         }
     }
 }
