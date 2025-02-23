@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mage-removebg-preview_0: -1167567842896394560
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

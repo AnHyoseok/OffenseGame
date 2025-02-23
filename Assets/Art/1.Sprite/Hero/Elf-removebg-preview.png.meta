@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Elf-removebg-preview_0: 1364784351257321382
+      Elf-removebg-preview_1: -7423049776188949246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
